@@ -1,4 +1,4 @@
-package com.gwf.weather.collection;
+package com.gwf.weather;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
