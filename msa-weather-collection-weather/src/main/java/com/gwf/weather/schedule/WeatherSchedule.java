@@ -1,5 +1,6 @@
 package com.gwf.weather.schedule;
 
+import com.gwf.weather.service.CityClient;
 import com.gwf.weather.service.WeatherDataCollectionService;
 import com.gwf.weather.vo.City;
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +28,11 @@ public class WeatherSchedule {
     @Autowired
     private WeatherDataCollectionService weatherDataCollectionService;
 
+    @Autowired
+    private CityClient cityClient;
 
-    @Scheduled(cron = "0 0/5 * * * *")
+
+    @Scheduled(cron = "0 0/1 * * * *")
     public void weatherDataSyncJob(){
         log.info(buildLog("start"));
 
@@ -37,9 +41,7 @@ public class WeatherSchedule {
 
         try {
             //TODO 改为由城市数据API微服务来提供数据
-            cityList = new ArrayList<>();
-            City city = City.builder().cityId("101280601").cityName("深圳").build();
-            cityList.add(city);
+            cityList = cityClient.listCitys();
         } catch (Exception e) {
             log.error("获取城市列表失败",e);
         }

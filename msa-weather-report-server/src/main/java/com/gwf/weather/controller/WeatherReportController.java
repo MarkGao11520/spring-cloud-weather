@@ -1,5 +1,6 @@
 package com.gwf.weather.controller;
 
+import com.gwf.weather.service.CityClient;
 import com.gwf.weather.service.WeatherReportService;
 import com.gwf.weather.vo.City;
 import org.slf4j.Logger;
@@ -29,24 +30,21 @@ public class WeatherReportController {
 	@Autowired
 	private WeatherReportService weatherReportService;
 
+	@Autowired
+	private CityClient cityClient;
+
 	
 	@GetMapping("/cityId/{cityId}")
 	public ModelAndView getReportByCityId(@PathVariable("cityId") String cityId, Model model) throws Exception {
 		// 获取城市ID列表
-		// TODO 改为由城市数据API微服务来提供数据
 		List<City> cityList = null;
 
 		try {
-
-			// TODO 改为由城市数据API微服务提供数据
-			cityList = new ArrayList<>();
-			City city = new City();
-			city.setCityId("101280601");
-			city.setCityName("深圳");
-			cityList.add(city);
-
+			cityList = cityClient.listCitys();
 		} catch (Exception e) {
 			logger.error("Exception!", e);
+			//TODO 改为自定义API异常
+			throw new RuntimeException("获取城市数据列表失败");
 		}
 
 		

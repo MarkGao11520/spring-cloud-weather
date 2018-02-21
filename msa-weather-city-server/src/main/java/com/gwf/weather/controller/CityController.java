@@ -3,7 +3,6 @@ package com.gwf.weather.controller;
 import com.gwf.weather.service.CityDataService;
 import com.gwf.weather.vo.City;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

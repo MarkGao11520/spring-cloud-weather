@@ -1,19 +1,19 @@
-weather:
-  uri: http://wthrcdn.etouch.cn/weather_mini?
 spring:
   application:
-    name: msa-weather-collection-server
+    name: msa-weather-report-server
+  thymeleaf:
+    cache: false
 
 eureka:
     # 服务的url
     service-url:
       defaultZone: http://localhost:8761/eureka/
 server:
-  port: 9992
+  port: 9994
+
 feign:
   client:
     config:
       feignName:
         connectTimeout: 50000
         readTimeout: 50000
-

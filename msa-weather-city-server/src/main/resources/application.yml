@@ -1,12 +1,10 @@
-weather:
-  uri: http://wthrcdn.etouch.cn/weather_mini?
 spring:
   application:
-    name: msa-weather-data-server
+    name: msa-weather-city-server
 
 eureka:
     # 服务的url
     service-url:
       defaultZone: http://localhost:8761/eureka/
 server:
-  port: 9993
+  port: 9991

@@ -66,7 +66,7 @@ public class WeatherDataServiceImpl implements WeatherDataService {
         if (stringRedisTemplate.hasKey(uri)) {
             strBody = stringRedisTemplate.opsForValue().get(uri);
         } else {
-            log.error("查询数据不存在");
+            log.error("查询数据不存在,key:"+uri);
             // TODO 自定义异常
             throw new RuntimeException("查询数据不存在");
         }

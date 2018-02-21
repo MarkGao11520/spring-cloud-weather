@@ -8,6 +8,8 @@
     <artifactId>spring-cloud-weather</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>pom</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -18,6 +20,8 @@
         <module>msa-weather-data-server</module>
         <module>msa-weather-report-server</module>
         <module>msa-weather-city-server</module>
+        <module>micro-weather-eureka-server</module>
+        <module>micro-weather-eureka-client</module>
     </modules>
 
 

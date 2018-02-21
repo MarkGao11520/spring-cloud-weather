@@ -1,9 +1,13 @@
 package com.gwf.weather.service.impl;
 
+import com.gwf.weather.service.WeatherDataClient;
 import com.gwf.weather.service.WeatherReportService;
 import com.gwf.weather.vo.Forecast;
 import com.gwf.weather.vo.Weather;
+import com.gwf.weather.vo.WeatherResponse;
 import com.gwf.weather.vo.Yesterday;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,62 +21,25 @@ import java.util.List;
  * @author <a href="https://waylau.com">Way Lau</a> 
  */
 @Service
+@Slf4j
 public class WeatherReportServiceImpl implements WeatherReportService {
+
+	private static final int SUCCESS_CODE = 1000;
+
+	@Autowired
+	private WeatherDataClient weatherDataClient;
 
 
 	
 	@Override
 	public Weather getDataByCityId(String cityId) {
-		// TODO 改为由天气数据API微服务来提供
-		Weather data = new Weather();
-		data.setAqi("81");
-		data.setCity("深圳");
-		data.setGanmao("容易感冒！多穿衣");
-		data.setWendu("22");
+		WeatherResponse response = weatherDataClient.getDataByCityId(cityId);
 
-		List<Forecast> forecastList = new ArrayList<>();
-
-		Forecast forecast = new Forecast();
-		forecast.setDate("25日星期天");
-		forecast.setType("晴");
-		forecast.setFengxiang("无风");
-		forecast.setHigh("高温 11度");
-		forecast.setLow("低温 1度");
-		forecastList.add(forecast);
-
-		forecast = new Forecast();
-		forecast.setDate("26日星期天");
-		forecast.setType("晴");
-		forecast.setFengxiang("无风");
-		forecast.setHigh("高温 11度");
-		forecast.setLow("低温 1度");
-		forecastList.add(forecast);
-
-		forecast = new Forecast();
-		forecast.setDate("27日星期天");
-		forecast.setType("晴");
-		forecast.setFengxiang("无风");
-		forecast.setHigh("高温 11度");
-		forecast.setLow("低温 1度");
-		forecastList.add(forecast);
-
-		forecast = new Forecast();
-		forecast.setDate("28日星期天");
-		forecast.setType("晴");
-		forecast.setFengxiang("无风");
-		forecast.setHigh("高温 11度");
-		forecast.setLow("低温 1度");
-		forecastList.add(forecast);
-
-		forecast = new Forecast();
-		forecast.setDate("29日星期天");
-		forecast.setType("晴");
-		forecast.setFengxiang("无风");
-		forecast.setHigh("高温 11度");
-		forecast.setLow("低温 1度");
-		forecastList.add(forecast);
-
-		data.setForecast(forecastList);
+		if(SUCCESS_CODE!=response.getStatus()){
+			log.error("获取天气数据失败,失败原因:"+response.getDesc());
+			throw new RuntimeException("获取天气数据失败");
+		}
+		Weather data = response.getData();
 		return data;
 	}
 
