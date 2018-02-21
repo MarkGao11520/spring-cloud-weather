@@ -15,6 +15,7 @@
     <modules>
         <module>gwf-weather-basic</module>
         <module>msa-weather-collection-weather</module>
+        <module>msa-weather-data-server</module>
     </modules>
 
 
