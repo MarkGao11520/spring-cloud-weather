@@ -1,6 +1,6 @@
 package com.gwf.weather.controller;
 
-import com.gwf.weather.service.CityClient;
+import com.gwf.weather.service.DataClient;
 import com.gwf.weather.service.WeatherReportService;
 import com.gwf.weather.vo.City;
 import org.slf4j.Logger;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +30,7 @@ public class WeatherReportController {
 	private WeatherReportService weatherReportService;
 
 	@Autowired
-	private CityClient cityClient;
+	private DataClient cityClient;
 
 	
 	@GetMapping("/cityId/{cityId}")
@@ -40,7 +39,7 @@ public class WeatherReportController {
 		List<City> cityList = null;
 
 		try {
-			cityList = cityClient.listCitys();
+			cityList = cityClient.listCities();
 		} catch (Exception e) {
 			logger.error("Exception!", e);
 			//TODO 改为自定义API异常

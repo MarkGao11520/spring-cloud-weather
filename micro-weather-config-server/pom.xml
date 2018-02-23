@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.gwf.weather</groupId>
-	<artifactId>micro-weather-eureka-client</artifactId>
+	<artifactId>micro-weather-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>micro-weather-eureka-client</name>
+	<name>micro-weather-eureka-server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -27,19 +27,18 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zuul</artifactId>
+			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 
 		<dependency>

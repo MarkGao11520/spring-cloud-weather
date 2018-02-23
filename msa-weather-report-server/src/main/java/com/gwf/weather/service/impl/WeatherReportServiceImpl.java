@@ -1,17 +1,12 @@
 package com.gwf.weather.service.impl;
 
-import com.gwf.weather.service.WeatherDataClient;
+import com.gwf.weather.service.DataClient;
 import com.gwf.weather.service.WeatherReportService;
-import com.gwf.weather.vo.Forecast;
 import com.gwf.weather.vo.Weather;
 import com.gwf.weather.vo.WeatherResponse;
-import com.gwf.weather.vo.Yesterday;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -27,7 +22,7 @@ public class WeatherReportServiceImpl implements WeatherReportService {
 	private static final int SUCCESS_CODE = 1000;
 
 	@Autowired
-	private WeatherDataClient weatherDataClient;
+	private DataClient weatherDataClient;
 
 
 	

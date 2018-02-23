@@ -22,6 +22,8 @@
         <module>msa-weather-city-server</module>
         <module>micro-weather-eureka-server</module>
         <module>micro-weather-eureka-client</module>
+        <module>micro-weather-config-server</module>
+        <module>micro-weather-config-client</module>
     </modules>
 
 

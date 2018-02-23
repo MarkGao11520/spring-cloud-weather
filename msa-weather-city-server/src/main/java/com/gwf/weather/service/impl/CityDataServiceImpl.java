@@ -35,6 +35,7 @@ public class CityDataServiceImpl implements CityDataService {
             list = XmlBuilter.xmlStrToObject(CityList.class,xmlStr);
         } catch (Exception e) {
             // TODO 自定义异常
+            log.error("文件转换异常",e);
             throw new Exception("文件转换异常");
         }
 

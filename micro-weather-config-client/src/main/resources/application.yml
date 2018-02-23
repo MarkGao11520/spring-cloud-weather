@@ -1,0 +1,24 @@
+# 配置规则
+# /{application}/{profile}[/{label}] # 不好使
+# /{application}-{profile}.yml
+# /{application}-{profile}.properties
+# /{label}/{application}-{profile}.yml  不好使
+# /{label}/{application}-{profile}.properties 不好使
+spring:
+  application:
+    # 配置规则里的{application}
+    name: micro-weather-config-client
+  cloud:
+    config:
+      # 不知道是什么原因，只能是8888
+      uri: http://localhost:8888
+      # 配置规则里的${profile}
+      profile: bus-dev
+      # 配置规则里的${label}
+      # label: test
+eureka:
+    # 服务的url
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+

@@ -23,13 +23,17 @@ public class XmlBuilter {
      */
     public static <T> T xmlStrToObject(Class<T> clazz,String xmlStr) throws Exception{
         Object xmlObject = null;
+        // 创建Xml转化实例实例
         JAXBContext context = JAXBContext.newInstance(clazz);
 
         // XML转化为对象的接口
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
-        try(Reader reader = new StringReader(xmlStr)
+        try(
+                // 将字符串转换为Reader
+                Reader reader = new StringReader(xmlStr)
             ){
+            // 执行具体的转换逻辑
             xmlObject = unmarshaller.unmarshal(reader);
         }
 
